@@ -77,7 +77,7 @@ class _TelaCameraState extends State<TelaCamera> {
       floatingActionButton: (image != null)
           ? FloatingActionButton.extended(
               onPressed: () => Navigator.pop(context),
-              label: const Text('Fotografar'),
+              label: const Text('Enviar'),
             )
           : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
