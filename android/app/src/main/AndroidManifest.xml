@@ -2,6 +2,7 @@
     package="com.example.cadastro_veterinario">
    <application
         android:label="cadastro_veterinario"
+        android:requestLegacyExternalStorage="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

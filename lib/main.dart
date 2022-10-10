@@ -26,18 +26,18 @@ class MyApp extends StatelessWidget {
       title: 'Clínica Veterinária',
       theme: ThemeData(
         primarySwatch: const MaterialColor(
-          0xFF002800,
+          0xFF153e19,
           {
-            50: Color(0xFFF00000),
-            100: Color(0xFF153E19),
-            200: Color(0xFFF8E1D7),
-            300: Color(0xFFF8E1D7),
-            400: Color(0xFFF8E1D7),
-            500: Color(0xFFF8E1D7),
-            600: Color(0xFFF8E1D7),
-            700: Color(0xFFF8E1D7),
-            800: Color(0xFFF8E1D7),
-            900: Color(0xFFF8E1D7)
+            50: Color(0xFF2D562E),
+            100: Color(0xFF2D562E),
+            200: Color(0xFF456E45),
+            300: Color(0xFF5E885D),
+            400: Color(0xFF77A276),
+            500: Color(0xFF91BD90),
+            600: Color(0xFFACD9AA),
+            700: Color(0xFFC8F6C5),
+            800: Color(0xFFE4FFE2),
+            900: Color(0xFFFFFFFE)
           },
         ),
       ),

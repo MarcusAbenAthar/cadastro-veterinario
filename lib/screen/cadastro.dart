@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:cadastro_veterinario/components/campos.dart';
 import 'package:cadastro_veterinario/model/animal_model.dart';
 import 'package:cadastro_veterinario/provider/cadastro_provider.dart';
 import 'package:cadastro_veterinario/repository/animal_repository.dart';
-import 'package:cadastro_veterinario/screen/camera.dart';
+import 'package:camera_camera/camera_camera.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -62,6 +64,9 @@ class _TelaCadastroState extends State<TelaCadastro> {
       },
       type: MaskAutoCompletionType.lazy);
 
+  File? arquivo;
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,16 +103,46 @@ class _TelaCadastroState extends State<TelaCadastro> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: const EdgeInsets.only(top: 10),
+              margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.1),
               child: ElevatedButton(
-                child: const Text("Tirar Foto"),
-                onPressed: () => {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const TelaCamera(),
-                          fullscreenDialog: true))
-                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32.0),
+                  ),
+                ),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CameraCamera(
+                      onFile: (file) {
+                        setState(() {
+                          arquivo = file;
+                        });
+                        // ignore: avoid_print
+                        // showPreview(arquivo);
+                        // _fotoController.text = arquivo;
+                      },
+                    ),
+                  ),
+                ),
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.only(right: 20.0),
+                        child: Icon(Icons.camera_alt),
+                      ),
+                      Text(
+                        'Tirar foto',
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width * 0.06),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
             CampoTexto(
@@ -139,6 +174,11 @@ class _TelaCadastroState extends State<TelaCadastro> {
                     bottom: MediaQuery.of(context).size.width * 0.1),
                 child: ElevatedButton(
                   onPressed: _cadastrar,
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
+                  ),
                   child: Text(
                     'Cadastrar',
                     style: TextStyle(
